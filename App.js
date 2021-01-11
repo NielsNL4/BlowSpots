@@ -5,7 +5,7 @@
  * @format
  * @flow strict-local
  */
-
+import 'react-native-gesture-handler';
 import React, {Component} from 'react';
 import {
   SafeAreaView,
@@ -14,7 +14,10 @@ import {
   View,
   Text,
   StatusBar,
+  Image,
 } from 'react-native';
+
+import { NavigationContainer } from '@react-navigation/native';
 
 import {
   Header,
@@ -24,28 +27,21 @@ import {
   ReloadInstructions,
 } from 'react-native/Libraries/NewAppScreen';
 
-import MapView, {PROVIDER_GOOGLE} from 'react-native-maps';
+import MapView, {PROVIDER_GOOGLE, Marker} from 'react-native-maps';
 
-export default class App extends Component<Props> {  
+import Map from './Components/Map.js';
+
+export default class App extends Component<Props> {
+  
+  
   render() {    
     return (
-      <>
+      <NavigationContainer>
       <StatusBar 
         barStyle = "dark-content"
         />
-          <MapView
-            provider={MapView.PROVIDER_GOOGLE}     
-            style={{flex: 1}}        
-            region={{          
-              latitude: 42.882004,          
-              longitude: 74.582748,          
-              latitudeDelta: 0.0922,          
-              longitudeDelta: 0.0421        
-            }}        
-            showsUserLocation={true}
-            showsMyLocationButton={true}      
-            />  
-      </>
+        <Map/>
+      </NavigationContainer>
     );  
   }}
 
@@ -78,6 +74,10 @@ const styles = StyleSheet.create({
   },
   highlight: {
     fontWeight: '700',
+  },
+  marker: {
+    width:50,
+    height:50,
   },
   footer: {
     color: Colors.dark,
