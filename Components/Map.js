@@ -25,7 +25,6 @@ const Map = () => {
       longitudeDelta: 0.0421        
     }}        
     showsUserLocation={true}
-    showsMyLocationButton={true}      
     >
       <Marker 
         coordinate={{

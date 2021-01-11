@@ -15,9 +15,13 @@ import {
   Text,
   StatusBar,
   Image,
+  TouchableOpacity,
 } from 'react-native';
 
-import { NavigationContainer } from '@react-navigation/native';
+import { NavigationContainer, StackActions, useNavigation, DrawerActions } from '@react-navigation/native';
+import { createStackNavigator } from '@react-navigation/stack';
+import { createDrawerNavigator } from '@react-navigation/drawer';
+import { useIsDrawerOpen } from '@react-navigation/drawer';
 
 import {
   Header,
@@ -31,20 +35,32 @@ import MapView, {PROVIDER_GOOGLE, Marker} from 'react-native-maps';
 
 import Map from './Components/Map.js';
 
+const Stack = createStackNavigator();
+const Drawer = createDrawerNavigator();
+
+const MapScreen = ({ navigation }) => {
+  return(
+    <>
+      <Map/>
+      <TouchableOpacity onPress={() => navigation.openDrawer()} style={styles.drawerButton}/>
+      <View style={styles.mapDrawerOverlay} />
+    </>
+  );
+};
+
 export default class App extends Component<Props> {
-  
-  
+
   render() {    
     return (
       <NavigationContainer>
-      <StatusBar 
-        barStyle = "dark-content"
-        />
-        <Map/>
+      <StatusBar barStyle = "dark-content"/>
+        <Drawer.Navigator>
+          <Drawer.Screen name="Map" component={MapScreen} />
+        </Drawer.Navigator>
       </NavigationContainer>
     );  
-  }}
-
+  }
+}
 
 const styles = StyleSheet.create({
   scrollView: {
@@ -72,12 +88,32 @@ const styles = StyleSheet.create({
     fontWeight: '400',
     color: Colors.dark,
   },
+  drawerButton: {
+    width: 50,
+    height: 50,
+    padding: 10,
+    borderRadius: 100,
+    backgroundColor: Colors.white,
+    position: 'absolute',
+    marginTop: 50,
+    marginLeft: 20,
+    borderColor: '#ccc',
+    borderWidth: 1,
+  },
   highlight: {
     fontWeight: '700',
   },
   marker: {
     width:50,
     height:50,
+  },
+  mapDrawerOverlay: {
+    position: 'absolute',
+    left: 0,
+    top: 0,
+    opacity: 0.0,
+    height: '100%',
+    width: 20,
   },
   footer: {
     color: Colors.dark,
