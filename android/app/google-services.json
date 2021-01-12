@@ -1,0 +1,46 @@
+{
+  "project_info": {
+    "project_number": "877596547935",
+    "project_id": "blowspots",
+    "storage_bucket": "blowspots.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:877596547935:android:59ee7422c00bfa5a0eb4ea",
+        "android_client_info": {
+          "package_name": "com.nyren.blowspots"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "877596547935-95o7npjsofj5t9f1av7ugab5b24eifl0.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDJcaiPUdiNSDym4Pnk_m2OKupRTjkn1GM"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "877596547935-95o7npjsofj5t9f1av7ugab5b24eifl0.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "877596547935-e5saeean0fs6grs78rkugdv04sn9gn8o.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "com.nyren.blowspots"
+              }
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

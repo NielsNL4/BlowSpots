@@ -34,6 +34,12 @@ import {
 import MapView, {PROVIDER_GOOGLE, Marker} from 'react-native-maps';
 
 import Map from './Components/Map.js';
+import { DrawerContent } from './Components/DrawerContent.js';
+
+import RootStackScreen from './Components/RootStackScreen.js';
+
+import Providers from './Components';
+
 
 const Stack = createStackNavigator();
 const Drawer = createDrawerNavigator();
@@ -48,19 +54,21 @@ const MapScreen = ({ navigation }) => {
   );
 };
 
-export default class App extends Component<Props> {
-
-  render() {    
-    return (
-      <NavigationContainer>
+const App = () => {
+  
+  return (
+    <NavigationContainer>
       <StatusBar barStyle = "dark-content"/>
-        <Drawer.Navigator>
-          <Drawer.Screen name="Map" component={MapScreen} />
-        </Drawer.Navigator>
-      </NavigationContainer>
-    );  
-  }
+      <Providers/>
+      {/* <Drawer.Navigator drawerContent={props => <DrawerContent {... props} /> } >
+        <Drawer.Screen name="Map" component={MapScreen} />
+      </Drawer.Navigator> */}
+      <RootStackScreen />
+    </NavigationContainer>
+  );  
 }
+
+export default App;
 
 const styles = StyleSheet.create({
   scrollView: {
